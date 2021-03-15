@@ -1,0 +1,36 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter length");
+		int len = scan.nextInt();
+		System.out.println("enter array");
+		int[] array = new int[len];
+		for (int i = 0; i < len; i++)
+			array[i] = scan.nextInt();
+		searchSequence(array);
+	}
+}
+class UserMainCode {
+	static int searchSequence(int[] array) {
+		int result = 0;
+		double mid1 = 0.0;
+		Arrays.sort(array);
+		int first = 0, second = 0;
+		int len = array.length;
+		for (int i = 0; i < len; i++) {
+			if (len % 2 == 1) {
+				result = array[(len + 1) / 2];
+			} else {
+				first = (array[(len / 2) - 1]);
+				second = (array[(len / 2)]);
+				mid1 = (first + second) / 2;
+				result = (int) Math.round(mid1 + 1);
+			}
+		}
+		System.out.println(result);
+		return result;
+	}
+}
